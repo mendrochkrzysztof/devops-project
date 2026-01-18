@@ -1,5 +1,5 @@
 # ============ ETAP 1: builder ============
-FROM python:3.11-slim as builder
+FROM python:3.14-slim as builder
 
 WORKDIR /app
 
@@ -29,7 +29,7 @@ RUN pip install --user --no-cache-dir pytest pytest-cov
 RUN python -m pytest tests/ -v --cov=app.src --cov-report=term-missing --cov-report=xml:coverage.xml
 
 # ============ ETAP 3: final ============
-FROM python:3.11-slim as final
+FROM python:3.14-slim as final
 
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y \
